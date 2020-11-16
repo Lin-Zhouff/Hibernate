@@ -4,36 +4,33 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Products {
+public class Carts {
 
     protected int id;
 
     protected String name;
 
-    protected String price;
+    private Set<Products> products = new HashSet<Products>();
 
-    private Set<Carts> carts = new HashSet<Carts>();
 
-    public Set<Carts> getCarts() {
-        return carts;
+    public Set<Products> getProducts() {
+        return products;
     }
 
-    public void setCarts(Set<Carts> carts) {
-        this.carts = carts;
+    public void setProducts(Set<Products> products) {
+        this.products = products;
     }
 
-    public Products() {
+    public Carts() {
     }
 
-    public Products(int id, String name, String price) {
+    public Carts(int id, String name) {
         this.id = id;
         this.name = name;
-        this.price = price;
     }
 
-    public Products(String name, String price) {
+    public Carts(String name) {
         this.name = name;
-        this.price = price;
     }
 
     public int getId() {
@@ -52,20 +49,15 @@ public class Products {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
+    public void addProd(Products prod) {
+        this.products.add(prod);
     }
 
     @Override
     public String toString() {
-        return "Model.Products{" +
+        return "Carts{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
                 '}';
     }
 }
