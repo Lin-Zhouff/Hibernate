@@ -21,7 +21,7 @@
     </property>
 
     <!-- Resource Mapping -->
-    <mapping class="Model.Products"/>
-    <mapping class="Model.Cart"/>
+    <mapping resource="Cart.hbm.tld"/>
+    <mapping resource="Product.hbm.tld"/>
   </session-factory>
 </hibernate-configuration>
