@@ -38,7 +38,7 @@ public class ProductsDAOImpl implements ProductsDAO{
     public void deleteProduct(int id) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Products product = session.get(Products.class, id);
+        Products product = (Products) session.get(Products.class, id);
         session.delete(product);
         transaction.commit();
         session.close();
@@ -47,7 +47,7 @@ public class ProductsDAOImpl implements ProductsDAO{
     @Override
     public Products findProductById(int id) {
         Session session = this.sessionFactory.openSession();
-        Products product = session.get(Products.class, id);
+        Products product = (Products) session.get(Products.class, id);
         session.close();
 
         return product;
@@ -56,7 +56,7 @@ public class ProductsDAOImpl implements ProductsDAO{
     @SuppressWarnings("unchecked")
     public List<Products> findAllProducts() {
         Session session = this.sessionFactory.openSession();
-        List<Products> productList = session.createQuery("from Products", Products.class).list();
+        List<Products> productList = session.createCriteria(Products.class).list();
         session.close();
 
         return productList;

@@ -1,37 +1,37 @@
 package Model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-
+@Entity
+@Table(name="products")
 public class Products {
 
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
     protected int id;
 
+    @Column(name="name")
     protected String name;
 
+    @Column(name="price")
     protected String price;
-
-    private Set<Carts> carts = new HashSet<Carts>();
-
-    public Set<Carts> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(Set<Carts> carts) {
-        this.carts = carts;
-    }
 
     public Products() {
     }
 
-    public Products(int id, String name, String price) {
-        this.id = id;
+    public Products(String name, String price) {
         this.name = name;
         this.price = price;
     }
 
-    public Products(String name, String price) {
+    public Products(int id, String name, String price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
@@ -62,10 +62,10 @@ public class Products {
 
     @Override
     public String toString() {
-        return "Model.Products{" +
+        return "Products{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
+                ", price=" + price +
                 '}';
     }
 }
