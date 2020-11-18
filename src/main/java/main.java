@@ -8,9 +8,24 @@ import java.util.List;
 public class main {
     public static void main(String args[]){
         ProductsDAO products = ProductsDAOImpl.getInstance();
-        CartsDAO carts = CartsDAOImpl.getInstance();
+        CartsDAO cart2 = CartsDAOImpl.getInstance();
 
-        carts.addProdToCart(products.findProductById(1),carts.findCartById(2));
+        List<Products> productsList;
+
+        Carts newcart = new Carts( "Linfeng");
+        cart2.saveCart(newcart);
+
+        Products newprod = new Products("iphone 12 pro", "999");
+        products.saveProduct(newprod);
+
+        productsList = products.findAllProducts();
+        System.out.println("Add a new product:");
+        for (Products product : productsList) {
+            System.out.println(product.toString());
+        }
+
+
+        cart2.addProdToCart(1,1);
 
 
 //        List<Products> productsList = products.findAllProducts();

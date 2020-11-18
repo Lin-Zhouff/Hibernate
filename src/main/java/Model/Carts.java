@@ -12,6 +12,9 @@ public class Carts {
 
     private Set<Products> products = new HashSet<Products>();
 
+    public void addProd(Products prod) {
+        this.products.add(prod);
+    }
 
     public Set<Products> getProducts() {
         return products;
@@ -49,9 +52,7 @@ public class Carts {
         this.name = name;
     }
 
-    public void addProd(Products prod) {
-        this.products.add(prod);
-    }
+
 
     @Override
     public String toString() {

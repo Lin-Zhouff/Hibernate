@@ -12,7 +12,7 @@
 
         <set name="carts" table="carts_products" cascade="save-update">
             <key column="prod_id"/>
-            <many-to-many column="cart_id" class="Carts" />
+            <many-to-many column="cart_id" class="Carts" lazy="false" fetch ="select" />
         </set>
     </class>
 </hibernate-mapping>

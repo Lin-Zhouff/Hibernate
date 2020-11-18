@@ -17,7 +17,7 @@ public interface CartsDAO {
 
     List<Carts> findAllCarts();
 
-    void addProdToCart(Products product, Carts cart);
+    void addProdToCart(int prodid, int cartid);
 
     void removeProdFromCart(Products product, Carts cart);
 }

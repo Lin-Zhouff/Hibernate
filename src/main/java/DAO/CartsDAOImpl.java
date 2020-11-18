@@ -15,6 +15,18 @@ public class CartsDAOImpl implements CartsDAO{
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     @Override
+    public void addProdToCart(int prodid, int cartid) {
+        Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Products product = session.get(Products.class, prodid);
+        Carts cart = session.get(Carts.class, cartid);
+        cart.addProd(product);
+        session.save(cart);
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
     public int saveCart(Carts cart) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -62,15 +74,7 @@ public class CartsDAOImpl implements CartsDAO{
         return cartList;
     }
 
-    @Override
-    public void addProdToCart(Products product, Carts cart) {
-        Session session = this.sessionFactory.openSession();
-        cart.addProd(product);
-        session.save(cart);
-        session.getTransaction().commit();
-        session.close();
 
-    }
 
     @Override
     public void removeProdFromCart(Products product, Carts cart) {

@@ -62,7 +62,7 @@ public class Products {
 
     @Override
     public String toString() {
-        return "Model.Products{" +
+        return "Products{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
